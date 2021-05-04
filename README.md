@@ -29,12 +29,11 @@ and then use it in html :
  ````
  |property|description|type|example
 |----|----|-----|-----|
-|less|A word is displayed before the text is shortened|string|show
-|more|A word is displayed after the text is shortened|string |hide
+|less|A word is displayed before the text is shortened|string|hide
+|more|A word is displayed after the text is shortened|string |show
 |number|Number of characters to display|number|50
 
 <br>
-<span style="color:yellow"> note:</span> default color for toggle button is <span style="color:#ff00ff">#ff00ff</span> , if you want to use costum style, use the builtin `.toggleText` class.
 
 ```
 .toggleText{
