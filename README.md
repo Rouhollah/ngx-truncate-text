@@ -1,5 +1,5 @@
 # ngx-truncate-text
-### this module is for truncate text and some usefule features for manipulating the text.
+### This module is for shortening the text, or in other words, displays the desired number of characters in the text and includes some useful features for text manipulation.
 ## install:
 ```
 npm i ngx-truncate-text

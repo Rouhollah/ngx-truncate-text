@@ -2,6 +2,6 @@
   "name": "ngx-truncate-text",
   "version": "1.0.0",
   "author": "Rouhollah Torshizi",
-  "description": "You can display the desired number of characters in the text.",
+  "description": "This module is for shortening the text, or in other words, displays the desired number of characters in the text.",
   "peerDependencies": { }
 }
