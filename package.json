@@ -1,7 +1,14 @@
 {
   "name": "ngx-truncate-text",
-  "version": "1.0.0",
-  "author": "Rouhollah Torshizi",
-  "description": "This module is for shortening the text, or in other words, displays the desired number of characters in the text.",
+  "version": "1.1.0",
+  "author": {
+    "name":"Rouhollah Torshizi",
+    "email":"torshizi1@gmail.com"
+  },
+  "description": "This module is for shortening the text and also includes some useful features for text manipulation.",
+  "keywords": ["truncate text","shortening text","truncate","shortening"],
+  "homepage": "https://github.com/Rouhollah/ngx-truncate-text",
+  "bugs": "https://github.com/Rouhollah/ngx-truncate-text/issues",
+  "license":"MIT",
   "peerDependencies": { }
 }

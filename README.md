@@ -1,6 +1,7 @@
-# ngx-truncate-text
-### This module is for shortening the text, or in other words, displays the desired number of characters in the text and includes some useful features for text manipulation.
-## install:
+## ngx-truncate-text
+This module is for shortening the text and also includes some useful features for text manipulation.
+#### see [demo on stackblitz.](https://stackblitz.com/edit/ngx-truncate-text?file=src/app/app.component.html)
+### install:
 ```
 npm i ngx-truncate-text
 ```
@@ -27,11 +28,12 @@ and then use it in html :
 </p>
 
  ````
- |property|description|type|example
+ |property|description|type|version|
 |----|----|-----|-----|
-|less|A word is displayed before the text is shortened|string|hide
-|more|A word is displayed after the text is shortened|string |show
-|number|Number of characters to display|number|50
+|less|A word is displayed before the text is shortened|string|1.0.0
+|more|A word is displayed after the text is shortened|string |1.0.0
+|number|Number of characters to display|number|1.0.0
+|completeWord|It prevents word break when shortening text on a part of the word.|boolean|1.1.0+
 
 <br>
 <span style="color:yellow"> Note:</span> default color for toggle button is <span style="color:#ff00ff">#ff00ff</span> , if you want to use costum style, use the builtin `.toggleText` class.
@@ -43,6 +45,6 @@ and then use it in html :
 	font-style: italic;
 }
 ```
-### version 1.0.0
-#### [ example version 1.0.0](https://stackblitz.com/edit/angular-truncate-text)
-### in developing ...
+#### latest version 1.1.0
+
+#### in developing ...
