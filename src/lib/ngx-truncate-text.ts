@@ -1,4 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, Input, Renderer2 } from '@angular/core';
+import { NgxTruncateService } from './ngx-truncate.service';
 
 @Directive({
   selector: '[ngxTruncateText]'
@@ -10,11 +11,16 @@ export class NgxTruncateTextDirective implements AfterViewInit {
   @Input() less: string;
   @Input() number: number;
   @Input() completeWord: boolean;
+  @Input() hashtag: boolean;
   target: string;
   replace = false;
   text: string;
 
-  constructor(private elRef: ElementRef, private renderer: Renderer2) {
+
+  constructor(private elRef: ElementRef,
+    private renderer: Renderer2,
+    private trunService: NgxTruncateService) {
+    (<any>window).trun = this;
     // elRef will get a reference to the element where
     // the directive is placed
     this.element = elRef.nativeElement;
@@ -27,21 +33,23 @@ export class NgxTruncateTextDirective implements AfterViewInit {
   fill(text) {
     this.text = text;
     let toggling = false;
+    let remainText: string = "";
     if (text.length > this.number) {
+      remainText = this.trunService.applyCondition(text, this.number, this.completeWord, this.hashtag);
       // برای نمایش ادامه یا پنهان
-      const remainText = this.completeWord ? this.claculateRemainText(): this.text.substring(0, this.number);
       toggling = true;
       this.replace = true;
       this.element.innerHTML = remainText + ' ... ';
       const span = this.renderer.createElement('span');
       span.innerHTML = this.more;
       this.renderer.setStyle(span, 'color', '#ff00ff');
+      this.renderer.setStyle(span, 'cursor', 'pointer');
       this.renderer.addClass(span, 'toggleText');
 
       this.renderer.listen(span, 'click', (event) => this.replace === true ? this.showFullText(event) : this.hideSomeText(event));
       this.element.appendChild(span);
     } else {
-      this.element.innerHTML = this.text;
+      this.element.innerHTML = this.hashtag ? this.trunService.findHashtag(text) : text;
     }
 
   }
@@ -52,11 +60,13 @@ export class NgxTruncateTextDirective implements AfterViewInit {
   */
   showFullText(mouseDown: MouseEvent) {
     const span = this.renderer.createElement('span');
-    span.innerHTML = this.less;
+    span.innerHTML = " "+this.less;
     this.renderer.setStyle(span, 'color', '#ff00ff');
+    this.renderer.setStyle(span, 'cursor', 'pointer');
+
     this.renderer.addClass(span, 'toggleText');
 
-    this.element.innerHTML = this.text;
+    this.element.innerHTML = this.hashtag ? this.trunService.findHashtag(this.text) : this.text ;
 
     this.renderer.listen(span, 'click', (event) => this.hideSomeText(event));
     this.element.appendChild(span);
@@ -69,9 +79,12 @@ export class NgxTruncateTextDirective implements AfterViewInit {
    * @param mouseDown {mousedown} mouse event
    */
   hideSomeText(mouseDown: MouseEvent) {
-    const remainText = this.completeWord ? this.claculateRemainText() : this.text.substring(0, this.number);
+    const remainText = this.trunService.applyCondition(this.text, this.number, this.completeWord, this.hashtag);
+
     const span = this.renderer.createElement('span');
     this.renderer.setStyle(span, 'color', '#ff00ff');
+    this.renderer.setStyle(span, 'cursor', 'pointer');
+
     this.renderer.addClass(span, 'toggleText');
     span.innerHTML = this.more;
     this.element.innerHTML = remainText + ' ... ';
@@ -83,14 +96,5 @@ export class NgxTruncateTextDirective implements AfterViewInit {
     this.replace = true;
   }
 
-  /*تابع بررسی قطع جمله
-   قطع جمله نباید از وسط یک کلمه باشد
- */
-  claculateRemainText() {
-    let i = 0
-    for (i = this.number; i < this.text.length; i++) {
-      if (this.text[i] == ' ') break;
-    }
-    return this.text.substring(0, i);
-  }
+
 }

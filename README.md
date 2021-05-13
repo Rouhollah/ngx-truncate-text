@@ -20,11 +20,10 @@ bootstrap: [...]
 })
 export class AppModule { }
 ````
-and then use it in html :
+and then use it in html (simplest use) :
  ````
- <p ngxTruncateText number="30" more="show" less="hide">
-	Lorem ipsum dolor sit amet
-	consectetur adipisicing elit. Aspernatur, tempore?
+ <p ngxTruncateText number="50" more="show" less="hide">
+	John Griffith London (1876 – 1916) was an American novelist, journalist, and social activist. A pioneer of commercial fiction and American magazines.
 </p>
 
  ````
@@ -34,9 +33,10 @@ and then use it in html :
 |more|A word is displayed after the text is shortened|string |1.0.0
 |number|Number of characters to display|number|1.0.0
 |completeWord|It prevents word break when shortening text on a part of the word.|boolean|1.1.0+
+|hashtag|finds hashtag in text (any language, zero-width non-joiner is considered.)|boolean|2.0.0+
 
 <br>
-<span style="color:yellow"> Note:</span> default color for toggle button is <span style="color:#ff00ff">#ff00ff</span> , if you want to use costum style, use the builtin `.toggleText` class.
+<span style="color:yellow"> Note:</span> default color for toggle button is <span style="color:#ff00ff">#ff00ff</span> and cursor style is pointer , if you want to use custom style, use the builtin `.toggleText` class.
 
 ```
 .toggleText{
@@ -45,6 +45,6 @@ and then use it in html :
 	font-style: italic;
 }
 ```
-#### latest version 1.1.0
+#### latest version is 2.0.0
 
 #### in developing ...
