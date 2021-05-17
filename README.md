@@ -1,6 +1,6 @@
 ## ngx-truncate-text
 This module is for shortening the text and also includes some useful features for text manipulation.
-#### see [demo on stackblitz.](https://stackblitz.com/edit/ngx-truncate-text?file=src/app/app.component.html)
+#### see [demo on stackblitz.](https://stackblitz.com/edit/ngx-truncate-text?file=src/app/app.component.html) in developing ...
 ### install:
 ```
 npm i ngx-truncate-text
@@ -34,9 +34,12 @@ and then use it in html (simplest use) :
 |number|Number of characters to display|number|1.0.0
 |completeWord|It prevents word break when shortening text on a part of the word.|boolean|1.1.0+
 |hashtag|finds hashtag in text (any language, zero-width non-joiner is considered.)|boolean|2.0.0+
+hasLiteral|If you want to see the text as it is (including "\ r", "\ n", "\ t"), use this feature |boolean|2.1.0+
 
 <br>
-<span style="color:yellow"> Note:</span> default color for toggle button is <span style="color:#ff00ff">#ff00ff</span> and cursor style is pointer , if you want to use custom style, use the builtin `.toggleText` class.
+<span style="color:yellow"> Note:</span>
+
+- default color for toggle button is <span style="color:#ff00ff">#ff00ff</span> and cursor style is pointer , if you want to use custom style, use the builtin `.toggleText` class.
 
 ```
 .toggleText{
@@ -45,6 +48,4 @@ and then use it in html (simplest use) :
 	font-style: italic;
 }
 ```
-#### latest version is 2.0.0
-
-#### in developing ...
+- default color for hashtags is <span style="color:#1b95e0">#1b95e0</span>  (from twitter), if you want to use custom style, use the builtin .hashtag class..

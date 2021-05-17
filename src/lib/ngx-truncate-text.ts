@@ -12,6 +12,7 @@ export class NgxTruncateTextDirective implements AfterViewInit {
   @Input() number: number;
   @Input() completeWord: boolean;
   @Input() hashtag: boolean;
+  @Input() hasLiteral: boolean;
   target: string;
   replace = false;
   text: string;
@@ -31,6 +32,7 @@ export class NgxTruncateTextDirective implements AfterViewInit {
 
 
   fill(text) {
+    if (!this.hasLiteral) text = text.replace(/(\r\n\t|\n|\r\t)/gm, ' ');
     this.text = text;
     let toggling = false;
     let remainText: string = "";
@@ -49,9 +51,11 @@ export class NgxTruncateTextDirective implements AfterViewInit {
       this.renderer.listen(span, 'click', (event) => this.replace === true ? this.showFullText(event) : this.hideSomeText(event));
       this.element.appendChild(span);
     } else {
-      this.element.innerHTML = this.hashtag ? this.trunService.findHashtag(text) : text;
+      this.element.innerHTML = this.hashtag  ? this.trunService.findHashtag(text) : text;
     }
-
+    //اعمال شود این کلاس قرار داده می شود  html در \n برای اینکه کاراکتر های
+    if (this.hasLiteral)
+      this.element.style.whiteSpace = 'pre-line';
   }
 
   /*
@@ -60,14 +64,17 @@ export class NgxTruncateTextDirective implements AfterViewInit {
   */
   showFullText(mouseDown: MouseEvent) {
     const span = this.renderer.createElement('span');
-    span.innerHTML = " "+this.less;
+    span.innerHTML = " " + this.less;
     this.renderer.setStyle(span, 'color', '#ff00ff');
     this.renderer.setStyle(span, 'cursor', 'pointer');
 
     this.renderer.addClass(span, 'toggleText');
 
-    this.element.innerHTML = this.hashtag ? this.trunService.findHashtag(this.text) : this.text ;
-
+    this.element.innerHTML = this.hashtag ? this.trunService.findHashtag(this.text) : this.text;
+    //اعمال شود این کلاس قرار داده می شود  html در \n برای اینکه کاراکتر های
+    if (this.hasLiteral)
+      this.element.style.whiteSpace = 'pre-line';
+    
     this.renderer.listen(span, 'click', (event) => this.hideSomeText(event));
     this.element.appendChild(span);
     // جلوگیری از کلیک روی عنصر پدر
@@ -88,7 +95,10 @@ export class NgxTruncateTextDirective implements AfterViewInit {
     this.renderer.addClass(span, 'toggleText');
     span.innerHTML = this.more;
     this.element.innerHTML = remainText + ' ... ';
-
+    //اعمال شود این کلاس قرار داده میشود  html در  n \برای اینکه کاراکتر های
+    if (this.hasLiteral)
+      this.element.style.whiteSpace = 'pre-line';
+    
     this.renderer.listen(span, 'click', (event) => this.showFullText(event));
     this.element.appendChild(span);
     // جلوگیری از کلیک روی عنصر پدر
