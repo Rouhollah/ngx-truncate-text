@@ -1,12 +1,12 @@
 {
   "name": "ngx-truncate-text",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "author": {
     "name":"Rouhollah Torshizi",
     "email":"torshizi1@gmail.com"
   },
-  "description": "This module is for shortening the text and also includes some useful features for text manipulation.",
-  "keywords": ["truncate text","shortening text","truncate","shortening","finding hashtag","recognize hashtag","hashtag"],
+  "description": "This module is for shortening the text and also includes some useful features for text manipulation like finding hashtags, highlight words with favorite color and so on after version 1.0.0.",
+  "keywords": ["truncate text","shortening text","truncate","shortening","finding hashtag","recognize hashtag","hashtag","highlight","highlight word","word coloring"],
   "homepage": "https://github.com/Rouhollah/ngx-truncate-text",
   "bugs": "https://github.com/Rouhollah/ngx-truncate-text/issues",
   "license":"MIT",
