@@ -1,6 +1,6 @@
 ## ngx-truncate-text
 This module is for shortening the text and also includes some useful features for text manipulation.
-#### see [demo on stackblitz.](https://stackblitz.com/edit/ngx-truncate-text?file=src/app/app.component.html) in developing ...
+#### see [demo on stackblitz (berfor Ivy structure)](https://stackblitz.com/edit/ngx-truncate-text?file=src/app/app.component.html) and [Angular 12 (Ivy) demo](https://stackblitz.com/edit/angular-ivy-amnukt?file=src%2Fapp%2Fapp.component.html).
 ### install:
 ```
 npm i ngx-truncate-text
